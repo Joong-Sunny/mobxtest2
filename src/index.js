@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from "react-dom";
+import { countViewModel } from "./MVVM/viewModel";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,4 +1,4 @@
-import NumberStore from "./numberStore.js";
+import NumberStore from "./MVVM/numberStore.js";
 import UserStore from "./userStore.js";
 const indexStore = () => ({
   NumberStore,
