@@ -1,17 +1,28 @@
 import "./App.css";
 import Count from "./MVVM/view";
 import { useEffect } from "react";
-import { countViewModel } from "./MVVM/viewModel";
-import { reaction } from "mobx";
+import { autorun, reaction } from "mobx";
 import NumberStore from "./MVVM/numberStore";
 import { observer } from "mobx-react";
 
 const App = observer(() => {
 
   useEffect(() => {
-    console.log("useEffect작동!");
-    // console.log(countViewModel.num)
-  }, [NumberStore.num]);
+    const disposer = reaction(
+
+      () => JSON.stringify(NumberStore.num),
+
+      (newValue, prevValue) => {
+        console.log("내가 원하던 사이드이펙트 발동!");
+        console.log(`값은 ${prevValue} 에서 ${newValue}가 됨`);
+      }
+    );
+
+    // 컴포넌트가 언마운트될 때 해지
+    return () => {
+      disposer();
+    };
+  }, []);
 
 
   return <Count/>;
