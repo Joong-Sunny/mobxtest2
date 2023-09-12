@@ -1,9 +1,10 @@
 import "./App.css";
 import Count from "./MVVM/view";
 import { useEffect } from "react";
-import { autorun, reaction } from "mobx";
+import { autorun, reaction, Reaction } from "mobx";
 import NumberStore from "./MVVM/numberStore";
 import { observer } from "mobx-react";
+import counter from "./MVVM/classNumberSotre";
 
 const App = observer(() => {
 
@@ -25,7 +26,7 @@ const App = observer(() => {
   }, []);
 
 
-  return <Count/>;
+  return <Count counter={counter}/>;
 });
 
 export default App;
